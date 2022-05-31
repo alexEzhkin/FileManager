@@ -20,14 +20,14 @@ class ViewController: UIViewController {
             title: NSString(string: "+") as String,
             style: .done,
             target: self,
-            action: #selector(createFolder))
+            action: #selector(createFolderAction))
         let font = UIFont.systemFont(ofSize: 28)
         let attributes = [NSAttributedString.Key.font : font]
         createFolderBarButtonItem.setTitleTextAttributes(attributes, for: .normal)
         self.navigationItem.rightBarButtonItem  = createFolderBarButtonItem
     }
     
-    @objc func createFolder(){
+    @objc func createFolderAction(){
         showAlert()
     }
     
@@ -41,6 +41,7 @@ class ViewController: UIViewController {
                                          style: .default) { _ in
             let folderName = messageAlert.textFields?.first?.text ?? "folder"
             print(folderName)
+            self.createFolder(folderName: folderName)
             return
         }
         
@@ -54,5 +55,24 @@ class ViewController: UIViewController {
         
         present(messageAlert, animated: true)
     }
+    
+    private func createFolder(folderName: String) {
+        guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+            else { return }
+        
+        let folderPath = documentDirectory.appendingPathComponent(folderName)
+        
+        print(folderPath)
+        
+        do {
+            try FileManager.default.createDirectory(at: folderPath,
+                                                    withIntermediateDirectories: true,
+                                                    attributes: nil)
+        }
+        catch {
+            print("Error")
+        }
+    }
+    
 }
 
