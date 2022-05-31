@@ -9,10 +9,27 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var tableView: UITableView!
+    
+    var filesInDocumentDirectory = [String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        getFolders()
+        
         addCreateFolderBarItem()
+        
+        tableView.dataSource = self
+        tableView.register(UITableViewCell.self,
+                           forCellReuseIdentifier: "TableViewCell")
+    }
+    
+    func getFolders() {
+        let arrayOfFolderURL = FileManager.default.urls(for: .documentDirectory) ?? [URL]()
+        for folderURL in arrayOfFolderURL {
+            filesInDocumentDirectory.append(folderURL.lastPathComponent)
+        }
     }
     
     func addCreateFolderBarItem() {
@@ -73,6 +90,26 @@ class ViewController: UIViewController {
             print("Error")
         }
     }
+}
+
+extension ViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.filesInDocumentDirectory.count
+    }
     
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell",
+                                                 for: indexPath)
+        cell.textLabel?.text = self.filesInDocumentDirectory[indexPath.row]
+        return cell
+    }
+}
+
+extension FileManager {
+    func urls(for directory: FileManager.SearchPathDirectory, skipsHiddenFiles: Bool = true ) -> [URL]? {
+        let documentsURL = urls(for: directory, in: .userDomainMask)[0]
+        let fileURLs = try? contentsOfDirectory(at: documentsURL, includingPropertiesForKeys: nil, options: skipsHiddenFiles ? .skipsHiddenFiles : [] )
+        return fileURLs
+    }
 }
 
