@@ -28,8 +28,31 @@ class ViewController: UIViewController {
     }
     
     @objc func createFolder(){
-        print("create Folder")
+        showAlert()
     }
-
+    
+    func showAlert() {
+        let messageAlert = UIAlertController(title: "Please, name the folder",
+                                             message: "You can enter the name of your folder in this field",
+                                             preferredStyle: .alert)
+        messageAlert.addTextField()
+        
+        let createAction = UIAlertAction(title: "Create",
+                                         style: .default) { _ in
+            let folderName = messageAlert.textFields?.first?.text ?? "folder"
+            print(folderName)
+            return
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel",
+                                         style: .cancel) { _ in
+            return
+        }
+        
+        messageAlert.addAction(createAction)
+        messageAlert.addAction(cancelAction)
+        
+        present(messageAlert, animated: true)
+    }
 }
 
