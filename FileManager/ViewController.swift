@@ -16,15 +16,15 @@ class ViewController: UIViewController {
     }
     
     func addCreateFolderBarItem() {
-        let settingsBarButtonItem = UIBarButtonItem(
+        let createFolderBarButtonItem = UIBarButtonItem(
             title: NSString(string: "+") as String,
             style: .done,
             target: self,
             action: #selector(createFolder))
         let font = UIFont.systemFont(ofSize: 28)
         let attributes = [NSAttributedString.Key.font : font]
-        settingsBarButtonItem.setTitleTextAttributes(attributes, for: .normal)
-        self.navigationItem.rightBarButtonItem  = settingsBarButtonItem
+        createFolderBarButtonItem.setTitleTextAttributes(attributes, for: .normal)
+        self.navigationItem.rightBarButtonItem  = createFolderBarButtonItem
     }
     
     @objc func createFolder(){
