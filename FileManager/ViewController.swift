@@ -22,8 +22,9 @@ class ViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UITableViewCell.self,
-                           forCellReuseIdentifier: "TableViewCell")
+        
+        tableView.register(UINib(nibName: "CustomTableViewCell", bundle: nil),
+                           forCellReuseIdentifier: CustomTableViewCell.id)
     }
     
     func getFolders() {
@@ -103,10 +104,12 @@ extension ViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell",
-                                                 for: indexPath)
-        cell.textLabel?.text = self.filesInDocumentDirectory[indexPath.row]
-        return cell
+        guard let tableViewCell = tableView.dequeueReusableCell(withIdentifier: CustomTableViewCell.id) as? CustomTableViewCell else {
+            return UITableViewCell()
+        }
+        tableViewCell.updateData(text: filesInDocumentDirectory[indexPath.row])
+        
+        return tableViewCell
     }
 }
 
