@@ -20,12 +20,14 @@ class ViewController: UIViewController {
         
         addCreateFolderBarItem()
         
+        tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UITableViewCell.self,
                            forCellReuseIdentifier: "TableViewCell")
     }
     
     func getFolders() {
+        filesInDocumentDirectory.removeAll()
         let arrayOfFolderURL = FileManager.default.urls(for: .documentDirectory) ?? [URL]()
         for folderURL in arrayOfFolderURL {
             filesInDocumentDirectory.append(folderURL.lastPathComponent)
@@ -79,6 +81,9 @@ class ViewController: UIViewController {
         
         let folderPath = documentDirectory.appendingPathComponent(folderName)
         
+        filesInDocumentDirectory.append(folderPath.lastPathComponent)
+        tableView.reloadData()
+        
         print(folderPath)
         
         do {
@@ -102,6 +107,14 @@ extension ViewController: UITableViewDataSource {
                                                  for: indexPath)
         cell.textLabel?.text = self.filesInDocumentDirectory[indexPath.row]
         return cell
+    }
+}
+
+extension ViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let row = filesInDocumentDirectory[indexPath.row]
+        
+        print(row)
     }
 }
 
