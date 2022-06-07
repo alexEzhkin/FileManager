@@ -78,6 +78,8 @@ class ElementsManager {
             return Element(name: name,
                            path: $0,
                            type: type)
+        }.sorted {
+            $0.type.sortPriority < $1.type.sortPriority
         }
         
         delegate?.reloadData()
