@@ -17,18 +17,17 @@ class CustomTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
     }
     
-    func updateData(text: String) {
-        cellImageView.image = UIImage(systemName: "folder")
-        cellLabel.text = text
+    func updateData(element: Element) {
+        self.cellImageView.image = UIImage(systemName: "folder.fill")
+        self.cellLabel.text = element.name
     }
     
 }
