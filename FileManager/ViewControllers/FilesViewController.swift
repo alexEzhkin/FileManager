@@ -38,7 +38,10 @@ class FilesViewController: UIViewController {
                     self.showCreateFolderAlert()
                 }),
                 UIAction(title: "Add image", image: UIImage(systemName: "photo.fill"), handler: { _ in
-                    self.uploadImage()()
+                    self.uploadImage()
+                }),
+                UIAction(title: "Take photo", image: UIImage(systemName: "camera.fill"), handler: { _ in
+                    self.uploadCameraPhoto()
                 }),
             ]
         }
@@ -111,15 +114,28 @@ extension FilesViewController: ElementsManagerDelegate {
 
 extension FilesViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        guard let image = info[.originalImage] as? UIImage,
-              let imageName = (info[.imageURL] as? URL)?.lastPathComponent else {
-            return
+        
+        var selectedImage: UIImage!
+        if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            selectedImage = image
+        } else if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            selectedImage = image
         }
         
-        manager.createImage(image, name: imageName)
-        
+        if (picker.sourceType == UIImagePickerController.SourceType.camera) {
+            
+            let imgName = UUID().uuidString
+            let documentDirectory = NSTemporaryDirectory()
+            let localPath = documentDirectory.appending(imgName)
+            
+            let data = selectedImage.jpegData(compressionQuality: 0.3)! as NSData
+            data.write(toFile: localPath, atomically: true)
+            let photoURL = URL.init(fileURLWithPath: localPath)
+            manager.createImage(selectedImage, name: imgName + ".jpeg")
+        }
         picker.dismiss(animated: true)
     }
+    
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         print("canceled")
