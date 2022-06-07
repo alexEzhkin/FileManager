@@ -32,12 +32,22 @@ class FilesViewController: UIViewController {
     }
     
     func setUpNavigationBar() {
-        let rightBarButtonItem = UIBarButtonItem(systemItem: .add,
-                                                 primaryAction: UIAction(handler: { _ in
-//            self.showCreateFolderAlert()
-            self.uploadImage()
-        }))
-        self.navigationItem.rightBarButtonItem = rightBarButtonItem
+        var menuItems: [UIAction] {
+            return [
+                UIAction(title: "Add folder", image: UIImage(systemName: "folder.fill"), handler: { _ in
+                    self.showCreateFolderAlert()
+                }),
+                UIAction(title: "Add image", image: UIImage(systemName: "photo.fill"), handler: { _ in
+                    self.uploadImage()()
+                }),
+            ]
+        }
+        
+        var demoMenu: UIMenu {
+            return UIMenu(title: "Choose your option", image: nil, identifier: nil, options: [], children: menuItems)
+        }
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(systemItem: .add, primaryAction: nil, menu: demoMenu)
     }
     
     func showCreateFolderAlert() {
