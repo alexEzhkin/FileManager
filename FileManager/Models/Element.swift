@@ -16,4 +16,5 @@ struct Element {
 
 enum ElementType {
     case folder
+    case image
 }

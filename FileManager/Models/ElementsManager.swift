@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class ElementsManager {
     var elements = [Element]()
@@ -26,7 +27,11 @@ class ElementsManager {
         switch type {
         case .folder:
             createFolder(name: name)
+            
+        default:
+            break
         }
+        reloadFolderContents()
     }
     
     private func createFolder(name: String) {
@@ -45,6 +50,19 @@ class ElementsManager {
         reloadFolderContents()
     }
     
+    func createImage(_ image: UIImage, name: String) {
+        guard let currentDirectory = self.currentDirectory,
+              let data = image.jpegData(compressionQuality: 1) else {
+            return
+        }
+        
+        let newImagePath = currentDirectory.appendingPathComponent(name)
+        
+        try? data.write(to: newImagePath)
+        
+        reloadFolderContents()
+    }
+    
     private func reloadFolderContents() {
         guard let currentDirectory = self.currentDirectory,
               let filesUrls = try? FileManager.default.contentsOfDirectory(at: currentDirectory,
@@ -53,9 +71,13 @@ class ElementsManager {
         }
         
         self.elements = filesUrls.map {
-            Element(name: $0.lastPathComponent,
-                    path: $0,
-                    type: .folder)
+            let name = $0.lastPathComponent
+            
+            let type: ElementType = name.contains(".png") || name.contains(".jpeg") ? .image : .folder
+            
+            return Element(name: name,
+                           path: $0,
+                           type: type)
         }
         
         delegate?.reloadData()

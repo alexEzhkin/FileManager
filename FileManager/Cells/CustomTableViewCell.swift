@@ -17,17 +17,35 @@ class CustomTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-
+        
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
     }
     
     func updateData(element: Element) {
-        self.cellImageView.image = UIImage(systemName: "folder.fill")
+        updateImage(element: element)
+        
         self.cellLabel.text = element.name
     }
     
+    private func updateImage(element: Element) {
+        let image: UIImage?
+        
+        switch element.type {
+        case .folder:
+            image = UIImage(systemName: "folder.fill")
+            
+        case .image:
+            guard let data = try? Data(contentsOf: element.path) else {
+                return
+            }
+            
+            image = UIImage(data: data)
+        }
+        
+        self.cellImageView.image = image
+    }
 }
