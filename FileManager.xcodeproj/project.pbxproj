@@ -19,6 +19,10 @@
 		FAC6EF75284FEAB600205339 /* ElementsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6EF74284FEAB600205339 /* ElementsManager.swift */; };
 		FAC6EF78284FEAF800205339 /* ElementsManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6EF77284FEAF800205339 /* ElementsManagerDelegate.swift */; };
 		FAC6EF7A284FF22C00205339 /* FilesViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6EF79284FF22C00205339 /* FilesViewController+TableView.swift */; };
+		FAC6EF7F285010BA00205339 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6EF7D285010BA00205339 /* CustomCollectionViewCell.swift */; };
+		FAC6EF80285010BA00205339 /* CustomCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAC6EF7E285010BA00205339 /* CustomCollectionViewCell.xib */; };
+		FAC6EF82285013EF00205339 /* FilesViewControlles+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6EF81285013EF00205339 /* FilesViewControlles+CollectionView.swift */; };
+		FAE25D0628514B7300743B3A /* ElementCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE25D0528514B7300743B3A /* ElementCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +40,10 @@
 		FAC6EF74284FEAB600205339 /* ElementsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementsManager.swift; sourceTree = "<group>"; };
 		FAC6EF77284FEAF800205339 /* ElementsManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementsManagerDelegate.swift; sourceTree = "<group>"; };
 		FAC6EF79284FF22C00205339 /* FilesViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FilesViewController+TableView.swift"; sourceTree = "<group>"; };
+		FAC6EF7D285010BA00205339 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
+		FAC6EF7E285010BA00205339 /* CustomCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCollectionViewCell.xib; sourceTree = "<group>"; };
+		FAC6EF81285013EF00205339 /* FilesViewControlles+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FilesViewControlles+CollectionView.swift"; sourceTree = "<group>"; };
+		FAE25D0528514B7300743B3A /* ElementCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,8 +93,8 @@
 		FA37ED9028480D0A00C499CB /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				FA37ED9128480D6B00C499CB /* CustomTableViewCell.swift */,
-				FA37ED9228480D6B00C499CB /* CustomTableViewCell.xib */,
+				FAC6EF7C2850108B00205339 /* CollectionViewCells */,
+				FAC6EF7B2850106C00205339 /* TableViewCells */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -96,6 +104,7 @@
 			children = (
 				FA37ED802846AECA00C499CB /* FilesViewController.swift */,
 				FAC6EF79284FF22C00205339 /* FilesViewController+TableView.swift */,
+				FAC6EF81285013EF00205339 /* FilesViewControlles+CollectionView.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -115,6 +124,25 @@
 				FAC6EF77284FEAF800205339 /* ElementsManagerDelegate.swift */,
 			);
 			path = Delegates;
+			sourceTree = "<group>";
+		};
+		FAC6EF7B2850106C00205339 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				FA37ED9128480D6B00C499CB /* CustomTableViewCell.swift */,
+				FA37ED9228480D6B00C499CB /* CustomTableViewCell.xib */,
+			);
+			path = TableViewCells;
+			sourceTree = "<group>";
+		};
+		FAC6EF7C2850108B00205339 /* CollectionViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				FAC6EF7D285010BA00205339 /* CustomCollectionViewCell.swift */,
+				FAC6EF7E285010BA00205339 /* CustomCollectionViewCell.xib */,
+				FAE25D0528514B7300743B3A /* ElementCollectionViewCell.swift */,
+			);
+			path = CollectionViewCells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -178,6 +206,7 @@
 				FA37ED892846AECC00C499CB /* LaunchScreen.storyboard in Resources */,
 				FA37ED862846AECC00C499CB /* Assets.xcassets in Resources */,
 				FA37ED9428480D6B00C499CB /* CustomTableViewCell.xib in Resources */,
+				FAC6EF80285010BA00205339 /* CustomCollectionViewCell.xib in Resources */,
 				FA37ED842846AECA00C499CB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -190,12 +219,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA37ED812846AECA00C499CB /* FilesViewController.swift in Sources */,
+				FAC6EF7F285010BA00205339 /* CustomCollectionViewCell.swift in Sources */,
+				FAE25D0628514B7300743B3A /* ElementCollectionViewCell.swift in Sources */,
 				FA37ED7D2846AECA00C499CB /* AppDelegate.swift in Sources */,
 				FA37ED9328480D6B00C499CB /* CustomTableViewCell.swift in Sources */,
 				FA37ED7F2846AECA00C499CB /* SceneDelegate.swift in Sources */,
 				FAC6EF75284FEAB600205339 /* ElementsManager.swift in Sources */,
 				FAC6EF73284FEAAA00205339 /* Element.swift in Sources */,
 				FAC6EF7A284FF22C00205339 /* FilesViewController+TableView.swift in Sources */,
+				FAC6EF82285013EF00205339 /* FilesViewControlles+CollectionView.swift in Sources */,
 				FAC6EF78284FEAF800205339 /* ElementsManagerDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

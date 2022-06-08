@@ -11,6 +11,9 @@ import PhotosUI
 class FilesViewController: UIViewController {
     
     @IBOutlet weak var foldersTableView: UITableView!
+    @IBOutlet weak var filesCollectionView: UICollectionView!
+    
+    let segmentControl: UISegmentedControl = UISegmentedControl(items: ["Table", "Collection"])
     
     var manager = ElementsManager()
     
@@ -19,17 +22,19 @@ class FilesViewController: UIViewController {
         
         manager.delegate = self
         
-        setUpTableView()
         setUpNavigationBar()
+        
+        setUpTableView()
+        setUpCollectionView()
     }
     
-    private func setUpTableView() {
-        foldersTableView.delegate = self
-        foldersTableView.dataSource = self
-        
-        foldersTableView.register(UINib(nibName: "CustomTableViewCell", bundle: nil),
-                                  forCellReuseIdentifier: CustomTableViewCell.id)
-    }
+//    private func setUpTableView() {
+//        foldersTableView.delegate = self
+//        foldersTableView.dataSource = self
+//
+//        foldersTableView.register(UINib(nibName: "CustomTableViewCell", bundle: nil),
+//                                  forCellReuseIdentifier: CustomTableViewCell.id)
+//    }
     
     func setUpNavigationBar() {
         var menuItems: [UIAction] {
@@ -50,7 +55,20 @@ class FilesViewController: UIViewController {
             return UIMenu(title: "Choose your option", image: nil, identifier: nil, options: [], children: menuItems)
         }
         
+        segmentControl.sizeToFit()
+        segmentControl.selectedSegmentIndex = 0
+        segmentControl.addTarget(self, action: #selector(FilesViewController.indexChanged(_:)), for: .valueChanged)
+        
+        self.navigationItem.titleView = segmentControl
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(systemItem: .add, primaryAction: nil, menu: demoMenu)
+    }
+    
+    @objc func indexChanged(_ sender: UISegmentedControl) {
+        if segmentControl.selectedSegmentIndex == 0 {
+            print("Select 0")
+        } else {
+            print("Select 1")
+        }
     }
     
     func showCreateFolderAlert() {
@@ -102,12 +120,37 @@ class FilesViewController: UIViewController {
         
         present(pickerViewController, animated: true)
     }
+    
+    // MARK: Cells manipulation
+    
+    func handleCellTap(indexPath: IndexPath) {
+        let element = manager.elements[indexPath.row]
+        
+        switch element.type {
+        case .folder:
+            navigateToNextFolder(element.path)
+            
+        case .image:
+            break
+        }
+    }
+    
+    private func navigateToNextFolder(_ url: URL) {
+        guard let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "FilesViewController") as? FilesViewController else {
+            return
+        }
+        
+        viewController.manager.currentDirectory = url
+        
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
 }
 
 extension FilesViewController: ElementsManagerDelegate {
     func reloadData() {
         DispatchQueue.main.async {
             self.foldersTableView.reloadData()
+            self.filesCollectionView.reloadData()
         }
     }
 }

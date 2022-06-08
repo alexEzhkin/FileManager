@@ -8,31 +8,30 @@
 import UIKit
 
 extension FilesViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let element = manager.elements[indexPath.row]
+    func setUpTableView() {
+        foldersTableView.delegate = self
+        foldersTableView.dataSource = self
         
-        switch element.type {
-        case .folder:
-            navigateToNextFolder(element.path)
-            
-        case .image:
-            break
-        }
+        foldersTableView.register(UINib(nibName: "CustomTableViewCell", bundle: nil),
+                                  forCellReuseIdentifier: CustomTableViewCell.id)
     }
-    
-    private func navigateToNextFolder(_ url: URL) {
-        guard let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "FilesViewController") as? FilesViewController else {
-            return
-        }
-        
-        viewController.manager.currentDirectory = url
-        
-        self.navigationController?.pushViewController(viewController, animated: true)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        handleCellTap(indexPath: indexPath)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         60
     }
+    
+//    private func navigateToNextFolder(_ url: URL) {
+//        guard let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "FilesViewController") as? FilesViewController else {
+//            return
+//        }
+//
+//        viewController.manager.currentDirectory = url
+//
+//        self.navigationController?.pushViewController(viewController, animated: true)
+//    }
 }
 
 extension FilesViewController: UITableViewDataSource {
