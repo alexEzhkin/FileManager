@@ -18,8 +18,9 @@ extension FilesViewController {
         filesCollectionView.delegate = self
         filesCollectionView.dataSource = self
         
-        filesCollectionView.register(ElementCollectionViewCell.self,
-                                     forCellWithReuseIdentifier: ElementCollectionViewCell.id)
+//        filesCollectionView.register(CustomCollectionViewCell.self,
+//                                     forCellWithReuseIdentifier: CustomCollectionViewCell.id)
+        filesCollectionView.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: CustomCollectionViewCell.id)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -39,7 +40,7 @@ extension FilesViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let collectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: ElementCollectionViewCell.id, for: indexPath) as? ElementCollectionViewCell else {
+        guard let collectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCollectionViewCell.id, for: indexPath) as? CustomCollectionViewCell else {
             return UICollectionViewCell()
         }
 

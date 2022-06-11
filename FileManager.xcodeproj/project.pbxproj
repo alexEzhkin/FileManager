@@ -22,7 +22,6 @@
 		FAC6EF7F285010BA00205339 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6EF7D285010BA00205339 /* CustomCollectionViewCell.swift */; };
 		FAC6EF80285010BA00205339 /* CustomCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAC6EF7E285010BA00205339 /* CustomCollectionViewCell.xib */; };
 		FAC6EF82285013EF00205339 /* FilesViewControlles+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6EF81285013EF00205339 /* FilesViewControlles+CollectionView.swift */; };
-		FAE25D0628514B7300743B3A /* ElementCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE25D0528514B7300743B3A /* ElementCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,7 +42,6 @@
 		FAC6EF7D285010BA00205339 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 		FAC6EF7E285010BA00205339 /* CustomCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCollectionViewCell.xib; sourceTree = "<group>"; };
 		FAC6EF81285013EF00205339 /* FilesViewControlles+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FilesViewControlles+CollectionView.swift"; sourceTree = "<group>"; };
-		FAE25D0528514B7300743B3A /* ElementCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,7 +138,6 @@
 			children = (
 				FAC6EF7D285010BA00205339 /* CustomCollectionViewCell.swift */,
 				FAC6EF7E285010BA00205339 /* CustomCollectionViewCell.xib */,
-				FAE25D0528514B7300743B3A /* ElementCollectionViewCell.swift */,
 			);
 			path = CollectionViewCells;
 			sourceTree = "<group>";
@@ -220,7 +217,6 @@
 			files = (
 				FA37ED812846AECA00C499CB /* FilesViewController.swift in Sources */,
 				FAC6EF7F285010BA00205339 /* CustomCollectionViewCell.swift in Sources */,
-				FAE25D0628514B7300743B3A /* ElementCollectionViewCell.swift in Sources */,
 				FA37ED7D2846AECA00C499CB /* AppDelegate.swift in Sources */,
 				FA37ED9328480D6B00C499CB /* CustomTableViewCell.swift in Sources */,
 				FA37ED7F2846AECA00C499CB /* SceneDelegate.swift in Sources */,
