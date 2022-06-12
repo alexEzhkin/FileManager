@@ -147,7 +147,7 @@ class FilesViewController: UIViewController {
             navigateToNextFolder(element.path)
             
         case .image:
-            break
+            displayImage(element.path)
         }
     }
     
@@ -158,6 +158,15 @@ class FilesViewController: UIViewController {
         
         viewController.manager.currentDirectory = url
         
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    private func displayImage(_ url: URL) {
+        guard let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ImageViewController") as? ImageViewController else {
+            return
+        }
+        
+        viewController.imageURL = url
         self.navigationController?.pushViewController(viewController, animated: true)
     }
 }

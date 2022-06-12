@@ -22,6 +22,7 @@
 		FAC6EF7F285010BA00205339 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6EF7D285010BA00205339 /* CustomCollectionViewCell.swift */; };
 		FAC6EF80285010BA00205339 /* CustomCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAC6EF7E285010BA00205339 /* CustomCollectionViewCell.xib */; };
 		FAC6EF82285013EF00205339 /* FilesViewControlles+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6EF81285013EF00205339 /* FilesViewControlles+CollectionView.swift */; };
+		FAE25D0A2856875400743B3A /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE25D092856875400743B3A /* ImageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		FAC6EF7D285010BA00205339 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 		FAC6EF7E285010BA00205339 /* CustomCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCollectionViewCell.xib; sourceTree = "<group>"; };
 		FAC6EF81285013EF00205339 /* FilesViewControlles+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FilesViewControlles+CollectionView.swift"; sourceTree = "<group>"; };
+		FAE25D092856875400743B3A /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				FA37ED802846AECA00C499CB /* FilesViewController.swift */,
 				FAC6EF79284FF22C00205339 /* FilesViewController+TableView.swift */,
 				FAC6EF81285013EF00205339 /* FilesViewControlles+CollectionView.swift */,
+				FAE25D092856875400743B3A /* ImageViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -224,6 +227,7 @@
 				FAC6EF73284FEAAA00205339 /* Element.swift in Sources */,
 				FAC6EF7A284FF22C00205339 /* FilesViewController+TableView.swift in Sources */,
 				FAC6EF82285013EF00205339 /* FilesViewControlles+CollectionView.swift in Sources */,
+				FAE25D0A2856875400743B3A /* ImageViewController.swift in Sources */,
 				FAC6EF78284FEAF800205339 /* ElementsManagerDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

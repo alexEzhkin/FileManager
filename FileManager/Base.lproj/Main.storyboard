@@ -83,16 +83,46 @@
             </objects>
             <point key="canvasLocation" x="-23.188405797101453" y="66.964285714285708"/>
         </scene>
-        <!--View Controller-->
+        <!--Image View Controller-->
         <scene sceneID="Pns-yD-OMC">
             <objects>
-                <viewController id="n1j-66-DRL" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ImageViewController" id="n1j-66-DRL" customClass="ImageViewController" customModule="FileManager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="d8x-gK-2mm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" maximumZoomScale="5" translatesAutoresizingMaskIntoConstraints="NO" id="Wkz-wf-CIE" customClass="ImageV">
+                                <rect key="frame" x="10" y="54" width="394" height="798"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="34M-jy-Qki">
+                                        <rect key="frame" x="0.0" y="0.0" width="394" height="798"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="34M-jy-Qki" firstAttribute="leading" secondItem="Wkz-wf-CIE" secondAttribute="leading" id="Reh-dz-Sx9"/>
+                                    <constraint firstAttribute="bottom" secondItem="34M-jy-Qki" secondAttribute="bottom" id="a6k-sb-0Dm"/>
+                                    <constraint firstItem="34M-jy-Qki" firstAttribute="height" secondItem="Wkz-wf-CIE" secondAttribute="height" id="kOt-ko-KJr"/>
+                                    <constraint firstAttribute="trailing" secondItem="34M-jy-Qki" secondAttribute="trailing" id="lkU-7X-CGQ"/>
+                                    <constraint firstItem="34M-jy-Qki" firstAttribute="width" secondItem="Wkz-wf-CIE" secondAttribute="width" id="lo8-JW-q9d"/>
+                                    <constraint firstItem="34M-jy-Qki" firstAttribute="top" secondItem="Wkz-wf-CIE" secondAttribute="top" id="mdW-GF-dDZ"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="725-eK-Oag"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="Q1H-sb-ng0"/>
+                            </scrollView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="gDf-kO-bjV"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Wkz-wf-CIE" firstAttribute="centerY" secondItem="gDf-kO-bjV" secondAttribute="centerY" id="QCu-uP-KK3"/>
+                            <constraint firstItem="Wkz-wf-CIE" firstAttribute="top" secondItem="gDf-kO-bjV" secondAttribute="top" constant="10" id="die-Bt-wUe"/>
+                            <constraint firstItem="Wkz-wf-CIE" firstAttribute="leading" secondItem="gDf-kO-bjV" secondAttribute="leading" constant="10" id="qQf-BT-dEx"/>
+                            <constraint firstItem="Wkz-wf-CIE" firstAttribute="centerX" secondItem="gDf-kO-bjV" secondAttribute="centerX" id="rd7-yB-sCn"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="34M-jy-Qki" id="XEV-t6-dNY"/>
+                        <outlet property="scrollView" destination="Wkz-wf-CIE" id="GcV-Rm-yaH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="osm-4l-wLq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
