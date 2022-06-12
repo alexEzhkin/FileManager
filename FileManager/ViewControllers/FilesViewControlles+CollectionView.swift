@@ -18,6 +18,8 @@ extension FilesViewController {
         filesCollectionView.delegate = self
         filesCollectionView.dataSource = self
         
+        filesCollectionView.allowsMultipleSelection = true
+        
         filesCollectionView.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: CustomCollectionViewCell.id)
     }
     
@@ -44,8 +46,7 @@ extension FilesViewController: UICollectionViewDataSource {
         
         let element = manager.elements[indexPath.row]
         
-        collectionViewCell.updateData(element: element)
-        collectionViewCell.backgroundColor = .yellow
+        collectionViewCell.updateData(element: element, selected: manager.selectedElements.contains(element))
         
         return collectionViewCell
     }

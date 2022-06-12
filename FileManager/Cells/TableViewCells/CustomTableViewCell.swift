@@ -18,6 +18,8 @@ class CustomTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        self.selectionStyle = .none
+        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -25,10 +27,12 @@ class CustomTableViewCell: UITableViewCell {
         
     }
     
-    func updateData(element: Element) {
+    func updateData(element: Element, selected: Bool) {
         updateImage(element: element)
         
         self.cellLabel.text = element.name
+        
+        self.backgroundColor = selected ? .yellow : .clear
     }
     
     private func updateImage(element: Element) {

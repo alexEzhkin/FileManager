@@ -22,7 +22,9 @@ class FilesViewController: UIViewController {
         
         manager.delegate = self
         
-        setUpNavigationBar()
+//        setUpNavigationBar()
+        
+        updateNavigationButtons()
         
         setUpTableView()
         setUpCollectionView()
@@ -30,15 +32,35 @@ class FilesViewController: UIViewController {
         changingViewCell()
     }
     
-    //    private func setUpTableView() {
-    //        foldersTableView.delegate = self
-    //        foldersTableView.dataSource = self
-    //
-    //        foldersTableView.register(UINib(nibName: "CustomTableViewCell", bundle: nil),
-    //                                  forCellReuseIdentifier: CustomTableViewCell.id)
-    //    }
+    private func updateNavigationButtons() {
+        switch manager.mode {
+        case .edit:
+            addEditModeRightButtons()
+            
+        case .view:
+            setUpNavigationBar()
+        }
+    }
+    
+    private func addEditModeRightButtons() {
+        let selectButton = UIBarButtonItem(systemItem: .cancel,
+                                           primaryAction: UIAction(handler: { _ in
+            self.manager.switchMode(.view)
+        }))
+        
+        let deleteButton = UIBarButtonItem(systemItem: .trash,
+                                           primaryAction: UIAction(handler: { _ in
+            self.manager.deleteSelectedElements()
+        }))
+        
+        navigationItem.rightBarButtonItems = [selectButton, deleteButton]
+    }
     
     func setUpNavigationBar() {
+        let selectButton = UIBarButtonItem(systemItem: .edit, primaryAction: UIAction(handler: { _ in
+            self.manager.switchMode(.edit)
+        }))
+        
         var menuItems: [UIAction] {
             return [
                 UIAction(title: "Add folder", image: UIImage(systemName: "folder.fill"), handler: { _ in
@@ -62,7 +84,10 @@ class FilesViewController: UIViewController {
         segmentControl.addTarget(self, action: #selector(FilesViewController.indexChanged(_:)), for: .valueChanged)
         
         self.navigationItem.titleView = segmentControl
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(systemItem: .add, primaryAction: nil, menu: demoMenu)
+        
+        let plusButton = UIBarButtonItem(systemItem: .add, primaryAction: nil, menu: demoMenu)
+        
+        self.navigationItem.rightBarButtonItems = [selectButton, plusButton]
     }
     
     @objc func indexChanged(_ sender: UISegmentedControl) {
@@ -138,6 +163,16 @@ class FilesViewController: UIViewController {
     func handleCellTap(indexPath: IndexPath) {
         let element = manager.elements[indexPath.row]
         
+        switch manager.mode {
+        case .edit:
+            manager.selectElement(element)
+            
+        case .view:
+            handleViewModeCellTap(element: element)
+        }
+    }
+    
+    private func handleViewModeCellTap(element: Element) {
         switch element.type {
         case .folder:
             navigateToNextFolder(element.path)
@@ -173,6 +208,11 @@ extension FilesViewController: ElementsManagerDelegate {
             self.foldersTableView.reloadData()
             self.filesCollectionView.reloadData()
         }
+    }
+    
+    func handleModeChange() {
+        updateNavigationButtons()
+        reloadData()
     }
 }
 

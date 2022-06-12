@@ -8,5 +8,6 @@
 import Foundation
 
 protocol ElementsManagerDelegate {
+    func handleModeChange()
     func reloadData()
 }

@@ -9,6 +9,13 @@ import Foundation
 import UIKit
 
 class ElementsManager {
+    var mode: Mode = .view {
+        didSet {
+            delegate?.handleModeChange()
+        }
+    }
+    
+    var selectedElements = [Element]()
     var elements = [Element]()
     
     var currentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
@@ -21,6 +28,18 @@ class ElementsManager {
     
     init() {
         reloadFolderContents()
+    }
+    
+    func switchMode(_ mode: Mode) {
+        self.mode = mode
+        
+        switch mode {
+        case .view:
+            self.selectedElements = []
+            
+        case .edit:
+            break
+        }
     }
     
     func createElement(type: ElementType, name: String) {
@@ -83,5 +102,32 @@ class ElementsManager {
         }
         
         delegate?.reloadData()
+    }
+    
+    func selectElement(_ element: Element) {
+        guard mode == .edit else { return }
+        
+        if let index = selectedElements.firstIndex(of: element) {
+            selectedElements.remove(at: index)
+        }
+        else {
+            selectedElements.append(element)
+        }
+        
+        delegate?.reloadData()
+        
+        print(selectedElements)
+    }
+    
+    func deleteSelectedElements() {
+        guard mode == .edit else { return }
+        
+        for element in selectedElements {
+            try? FileManager.default.removeItem(at: element.path)
+        }
+        
+        switchMode(.view)
+        
+        reloadFolderContents()
     }
 }

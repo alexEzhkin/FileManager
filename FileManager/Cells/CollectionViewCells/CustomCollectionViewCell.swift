@@ -20,11 +20,12 @@ class CustomCollectionViewCell: UICollectionViewCell {
         // Initialization code
     }
 
-    func updateData(element: Element) {
+    func updateData(element: Element, selected: Bool) {
         updateImage(element: element)
-
+        
         self.cellLabel.text = element.name
-        print(self.cellLabel.text)
+        
+        self.backgroundColor = selected ? .yellow : .clear
     }
 
     private func updateImage(element: Element) {
