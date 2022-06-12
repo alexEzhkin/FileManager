@@ -22,16 +22,6 @@ extension FilesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         60
     }
-    
-//    private func navigateToNextFolder(_ url: URL) {
-//        guard let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "FilesViewController") as? FilesViewController else {
-//            return
-//        }
-//
-//        viewController.manager.currentDirectory = url
-//
-//        self.navigationController?.pushViewController(viewController, animated: true)
-//    }
 }
 
 extension FilesViewController: UITableViewDataSource {

@@ -30,13 +30,13 @@ class FilesViewController: UIViewController {
         changingViewCell()
     }
     
-//    private func setUpTableView() {
-//        foldersTableView.delegate = self
-//        foldersTableView.dataSource = self
-//
-//        foldersTableView.register(UINib(nibName: "CustomTableViewCell", bundle: nil),
-//                                  forCellReuseIdentifier: CustomTableViewCell.id)
-//    }
+    //    private func setUpTableView() {
+    //        foldersTableView.delegate = self
+    //        foldersTableView.dataSource = self
+    //
+    //        foldersTableView.register(UINib(nibName: "CustomTableViewCell", bundle: nil),
+    //                                  forCellReuseIdentifier: CustomTableViewCell.id)
+    //    }
     
     func setUpNavigationBar() {
         var menuItems: [UIAction] {
@@ -70,14 +70,10 @@ class FilesViewController: UIViewController {
             UserDefaults.standard.set(false, forKey: "TableViewSegment")
             UserDefaults.standard.set(true, forKey: "CollectionViewSegment")
             UserDefaults.standard.set(0, forKey: "SelectedSegmentIndex")
-//            foldersTableView.isHidden = false
-//            filesCollectionView.isHidden = true
         } else {
             UserDefaults.standard.set(false, forKey: "CollectionViewSegment")
             UserDefaults.standard.set(true, forKey: "TableViewSegment")
             UserDefaults.standard.set(1, forKey: "SelectedSegmentIndex")
-//            filesCollectionView.isHidden = false
-//            foldersTableView.isHidden = true
         }
         changingViewCell()
     }
@@ -225,7 +221,7 @@ extension FilesViewController: PHPickerViewControllerDelegate {
             guard let image = image as? UIImage else {
                 return
             }
-
+            
             self.getImageName(itemProvider: itemProvider) { imageName in
                 guard let imageName = imageName else {
                     return

@@ -18,8 +18,6 @@ extension FilesViewController {
         filesCollectionView.delegate = self
         filesCollectionView.dataSource = self
         
-//        filesCollectionView.register(CustomCollectionViewCell.self,
-//                                     forCellWithReuseIdentifier: CustomCollectionViewCell.id)
         filesCollectionView.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: CustomCollectionViewCell.id)
     }
     
@@ -43,9 +41,9 @@ extension FilesViewController: UICollectionViewDataSource {
         guard let collectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCollectionViewCell.id, for: indexPath) as? CustomCollectionViewCell else {
             return UICollectionViewCell()
         }
-
+        
         let element = manager.elements[indexPath.row]
-
+        
         collectionViewCell.updateData(element: element)
         collectionViewCell.backgroundColor = .yellow
         

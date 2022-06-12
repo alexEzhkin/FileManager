@@ -28,9 +28,6 @@ class CustomCollectionViewCell: UICollectionViewCell {
     }
 
     private func updateImage(element: Element) {
-//        let imageView = UIImageView()
-//        self.cellImageView = imageView
-        
         let image: UIImage?
 
         switch element.type {
