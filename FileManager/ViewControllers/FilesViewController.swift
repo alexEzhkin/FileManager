@@ -26,6 +26,8 @@ class FilesViewController: UIViewController {
         
         setUpTableView()
         setUpCollectionView()
+        
+        changingViewCell()
     }
     
 //    private func setUpTableView() {
@@ -56,7 +58,7 @@ class FilesViewController: UIViewController {
         }
         
         segmentControl.sizeToFit()
-        segmentControl.selectedSegmentIndex = 0
+        segmentControl.selectedSegmentIndex = UserDefaults.standard.integer(forKey: "SelectedSegmentIndex")
         segmentControl.addTarget(self, action: #selector(FilesViewController.indexChanged(_:)), for: .valueChanged)
         
         self.navigationItem.titleView = segmentControl
@@ -65,10 +67,24 @@ class FilesViewController: UIViewController {
     
     @objc func indexChanged(_ sender: UISegmentedControl) {
         if segmentControl.selectedSegmentIndex == 0 {
-            print("Select 0")
+            UserDefaults.standard.set(false, forKey: "TableViewSegment")
+            UserDefaults.standard.set(true, forKey: "CollectionViewSegment")
+            UserDefaults.standard.set(0, forKey: "SelectedSegmentIndex")
+//            foldersTableView.isHidden = false
+//            filesCollectionView.isHidden = true
         } else {
-            print("Select 1")
+            UserDefaults.standard.set(false, forKey: "CollectionViewSegment")
+            UserDefaults.standard.set(true, forKey: "TableViewSegment")
+            UserDefaults.standard.set(1, forKey: "SelectedSegmentIndex")
+//            filesCollectionView.isHidden = false
+//            foldersTableView.isHidden = true
         }
+        changingViewCell()
+    }
+    
+    func changingViewCell() {
+        foldersTableView.isHidden = UserDefaults.standard.bool(forKey: "TableViewSegment")
+        filesCollectionView.isHidden = UserDefaults.standard.bool(forKey: "CollectionViewSegment")
     }
     
     func showCreateFolderAlert() {
