@@ -14,7 +14,6 @@ class CustomCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var cellImageView: UIImageView!
     @IBOutlet weak var cellLabel: UILabel!
 
-
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -43,6 +42,5 @@ class CustomCollectionViewCell: UICollectionViewCell {
             image = UIImage(data: data)
         }
         self.cellImageView.image = image
-        print(self.cellImageView.image)
     }
 }

@@ -18,6 +18,8 @@ class ElementsManager {
     var selectedElements = [Element]()
     var elements = [Element]()
     
+    private let imagesExtensions = [".jpeg", ".jpg", ".png", ".heic"]
+    
     var currentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
         didSet {
             reloadFolderContents()

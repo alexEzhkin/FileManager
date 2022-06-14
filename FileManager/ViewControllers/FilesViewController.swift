@@ -22,8 +22,6 @@ class FilesViewController: UIViewController {
         
         manager.delegate = self
         
-//        setUpNavigationBar()
-        
         updateNavigationButtons()
         
         setUpTableView()
@@ -126,9 +124,7 @@ class FilesViewController: UIViewController {
         }
         
         let cancelAction = UIAlertAction(title: "Cancel",
-                                         style: .cancel) { _ in
-            return
-        }
+                                         style: .cancel)
         
         messageAlert.addAction(createAction)
         messageAlert.addAction(cancelAction)
@@ -219,24 +215,13 @@ extension FilesViewController: ElementsManagerDelegate {
 extension FilesViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
-        var selectedImage: UIImage!
-        if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
-            selectedImage = image
-        } else if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            selectedImage = image
+        guard let image = info[.originalImage] as? UIImage,
+              let imageName = (info[.imageURL] as? URL)?.lastPathComponent else {
+            return
         }
         
-        if (picker.sourceType == UIImagePickerController.SourceType.camera) {
-            
-            let imgName = UUID().uuidString
-            let documentDirectory = NSTemporaryDirectory()
-            let localPath = documentDirectory.appending(imgName)
-            
-            let data = selectedImage.jpegData(compressionQuality: 0.3)! as NSData
-            data.write(toFile: localPath, atomically: true)
-            let photoURL = URL.init(fileURLWithPath: localPath)
-            manager.createImage(selectedImage, name: imgName + ".jpeg")
-        }
+        manager.createImage(image, name: imageName)
+        
         picker.dismiss(animated: true)
     }
     

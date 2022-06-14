@@ -9,7 +9,6 @@ import UIKit
 
 class ImageViewController: UIViewController {
 
-    
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var imageView: UIImageView!
     
@@ -40,9 +39,5 @@ class ImageViewController: UIViewController {
 extension ImageViewController: UIScrollViewDelegate {
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         imageView
-    }
-    
-    func scrollViewDidEndZooming(_ scrollView: UIScrollView, with view: UIView?, atScale scale: CGFloat) {
-        print(scale)
     }
 }

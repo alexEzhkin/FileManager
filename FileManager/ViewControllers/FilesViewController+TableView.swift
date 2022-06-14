@@ -17,6 +17,7 @@ extension FilesViewController: UITableViewDelegate {
         foldersTableView.register(UINib(nibName: "CustomTableViewCell", bundle: nil),
                                   forCellReuseIdentifier: CustomTableViewCell.id)
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         handleCellTap(indexPath: indexPath)
     }

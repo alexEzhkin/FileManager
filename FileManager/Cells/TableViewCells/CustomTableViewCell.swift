@@ -11,7 +11,6 @@ class CustomTableViewCell: UITableViewCell {
     
     static let id = "CustomTableViewCell"
     
-    
     @IBOutlet weak var cellImageView: UIImageView!
     @IBOutlet weak var cellLabel: UILabel!
     
