@@ -78,7 +78,7 @@ class FilesViewController: UIViewController {
         }
         
         segmentControl.sizeToFit()
-        segmentControl.selectedSegmentIndex = UserDefaults.standard.integer(forKey: "SelectedSegmentIndex")
+        segmentControl.selectedSegmentIndex = UserDefaults.standard.integer(forKey: UserDefaultsKey.indexOfDisplayMode.rawValue)
         segmentControl.addTarget(self, action: #selector(FilesViewController.indexChanged(_:)), for: .valueChanged)
         
         self.navigationItem.titleView = segmentControl
@@ -89,21 +89,16 @@ class FilesViewController: UIViewController {
     }
     
     @objc func indexChanged(_ sender: UISegmentedControl) {
-        if segmentControl.selectedSegmentIndex == 0 {
-            UserDefaults.standard.set(false, forKey: "TableViewSegment")
-            UserDefaults.standard.set(true, forKey: "CollectionViewSegment")
-            UserDefaults.standard.set(0, forKey: "SelectedSegmentIndex")
-        } else {
-            UserDefaults.standard.set(false, forKey: "CollectionViewSegment")
-            UserDefaults.standard.set(true, forKey: "TableViewSegment")
-            UserDefaults.standard.set(1, forKey: "SelectedSegmentIndex")
-        }
+        UserDefaults.standard.set(segmentControl.titleForSegment(at: segmentControl.selectedSegmentIndex), forKey: UserDefaultsKey.displayMode.rawValue)
+        
+        UserDefaultsService.shared.saveSegmentControl(segmentControlIndex: segmentControl.selectedSegmentIndex)
+        
         changingViewCell()
     }
     
     func changingViewCell() {
-        foldersTableView.isHidden = UserDefaults.standard.bool(forKey: "TableViewSegment")
-        filesCollectionView.isHidden = UserDefaults.standard.bool(forKey: "CollectionViewSegment")
+        foldersTableView.isHidden = UserDefaults.standard.bool(forKey: UserDefaultsKey.tableViewSegment.rawValue)
+        filesCollectionView.isHidden = UserDefaults.standard.bool(forKey: UserDefaultsKey.collectionViewSegment.rawValue)
     }
     
     func showCreateFolderAlert() {
