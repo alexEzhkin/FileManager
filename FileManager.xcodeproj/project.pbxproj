@@ -18,6 +18,7 @@
 		FA818745288764E2002AF551 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = FA818744288764E2002AF551 /* KeychainSwift */; };
 		FA818747288765DA002AF551 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA818746288765DA002AF551 /* KeychainService.swift */; };
 		FA81874928876644002AF551 /* FileViewContoller+KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA81874828876644002AF551 /* FileViewContoller+KeychainService.swift */; };
+		FA81874B28876725002AF551 /* LocalNotificationsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA81874A28876725002AF551 /* LocalNotificationsService.swift */; };
 		FAA6A78C2863B46800B2AE64 /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA6A78B2863B46800B2AE64 /* UserDefaultsService.swift */; };
 		FAC6EF73284FEAAA00205339 /* Element.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6EF72284FEAAA00205339 /* Element.swift */; };
 		FAC6EF75284FEAB600205339 /* ElementsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6EF74284FEAB600205339 /* ElementsManager.swift */; };
@@ -43,6 +44,7 @@
 		FA37ED9228480D6B00C499CB /* CustomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTableViewCell.xib; sourceTree = "<group>"; };
 		FA818746288765DA002AF551 /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 		FA81874828876644002AF551 /* FileViewContoller+KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileViewContoller+KeychainService.swift"; sourceTree = "<group>"; };
+		FA81874A28876725002AF551 /* LocalNotificationsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationsService.swift; sourceTree = "<group>"; };
 		FAA6A78B2863B46800B2AE64 /* UserDefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsService.swift; sourceTree = "<group>"; };
 		FAC6EF72284FEAAA00205339 /* Element.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Element.swift; sourceTree = "<group>"; };
 		FAC6EF74284FEAB600205339 /* ElementsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementsManager.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 			children = (
 				FAA6A78B2863B46800B2AE64 /* UserDefaultsService.swift */,
 				FA818746288765DA002AF551 /* KeychainService.swift */,
+				FA81874A28876725002AF551 /* LocalNotificationsService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -246,6 +249,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA81874B28876725002AF551 /* LocalNotificationsService.swift in Sources */,
 				FA37ED812846AECA00C499CB /* FilesViewController.swift in Sources */,
 				FA81874928876644002AF551 /* FileViewContoller+KeychainService.swift in Sources */,
 				FAC6EF7F285010BA00205339 /* CustomCollectionViewCell.swift in Sources */,

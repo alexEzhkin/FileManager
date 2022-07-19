@@ -33,6 +33,8 @@ class FilesViewController: UIViewController {
         setUpTableView()
         setUpCollectionView()
         
+        enableNotifications()
+        
         changingViewCell()
     }
     
@@ -269,5 +271,11 @@ extension FilesViewController: PHPickerViewControllerDelegate {
         itemProvider.loadFileRepresentation(forTypeIdentifier: UTType.image.identifier) { data, error in
             callback(data?.lastPathComponent)
         }
+    }
+    
+    // MARK: - LocalNotificationService manipulations
+    
+    private func enableNotifications() {
+        LocalNotificationsService.shared.requestNotificationsPermissions()
     }
 }
