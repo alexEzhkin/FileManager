@@ -36,7 +36,7 @@ class LocalNotificationsService {
         content.title = "Goodbye!"
         content.body = "See you again \u{1F601}"
         
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1,
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10,
                                                         repeats: false)
         
         let request = UNNotificationRequest(identifier: "Farewell notification",
