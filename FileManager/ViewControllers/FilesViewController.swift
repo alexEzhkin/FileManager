@@ -15,7 +15,13 @@ class FilesViewController: UIViewController {
     
     let segmentControl: UISegmentedControl = UISegmentedControl(items: ["Table", "Collection"])
     
+    var verificationStatus: Bool = false
+    
     var manager = ElementsManager()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        checkStatusOfVerification()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

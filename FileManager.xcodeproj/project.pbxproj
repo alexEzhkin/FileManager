@@ -17,6 +17,7 @@
 		FA37ED9428480D6B00C499CB /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA37ED9228480D6B00C499CB /* CustomTableViewCell.xib */; };
 		FA818745288764E2002AF551 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = FA818744288764E2002AF551 /* KeychainSwift */; };
 		FA818747288765DA002AF551 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA818746288765DA002AF551 /* KeychainService.swift */; };
+		FA81874928876644002AF551 /* FileViewContoller+KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA81874828876644002AF551 /* FileViewContoller+KeychainService.swift */; };
 		FAA6A78C2863B46800B2AE64 /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA6A78B2863B46800B2AE64 /* UserDefaultsService.swift */; };
 		FAC6EF73284FEAAA00205339 /* Element.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6EF72284FEAAA00205339 /* Element.swift */; };
 		FAC6EF75284FEAB600205339 /* ElementsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6EF74284FEAB600205339 /* ElementsManager.swift */; };
@@ -41,6 +42,7 @@
 		FA37ED9128480D6B00C499CB /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		FA37ED9228480D6B00C499CB /* CustomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTableViewCell.xib; sourceTree = "<group>"; };
 		FA818746288765DA002AF551 /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
+		FA81874828876644002AF551 /* FileViewContoller+KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileViewContoller+KeychainService.swift"; sourceTree = "<group>"; };
 		FAA6A78B2863B46800B2AE64 /* UserDefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsService.swift; sourceTree = "<group>"; };
 		FAC6EF72284FEAAA00205339 /* Element.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Element.swift; sourceTree = "<group>"; };
 		FAC6EF74284FEAB600205339 /* ElementsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementsManager.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				FAC6EF79284FF22C00205339 /* FilesViewController+TableView.swift */,
 				FAC6EF81285013EF00205339 /* FilesViewControlles+CollectionView.swift */,
 				FAE25D092856875400743B3A /* ImageViewController.swift */,
+				FA81874828876644002AF551 /* FileViewContoller+KeychainService.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -244,6 +247,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA37ED812846AECA00C499CB /* FilesViewController.swift in Sources */,
+				FA81874928876644002AF551 /* FileViewContoller+KeychainService.swift in Sources */,
 				FAC6EF7F285010BA00205339 /* CustomCollectionViewCell.swift in Sources */,
 				FAE25D0D2856A33D00743B3A /* Mode.swift in Sources */,
 				FA37ED7D2846AECA00C499CB /* AppDelegate.swift in Sources */,
