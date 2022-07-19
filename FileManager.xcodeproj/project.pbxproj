@@ -15,6 +15,8 @@
 		FA37ED892846AECC00C499CB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA37ED872846AECC00C499CB /* LaunchScreen.storyboard */; };
 		FA37ED9328480D6B00C499CB /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA37ED9128480D6B00C499CB /* CustomTableViewCell.swift */; };
 		FA37ED9428480D6B00C499CB /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA37ED9228480D6B00C499CB /* CustomTableViewCell.xib */; };
+		FA818745288764E2002AF551 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = FA818744288764E2002AF551 /* KeychainSwift */; };
+		FA818747288765DA002AF551 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA818746288765DA002AF551 /* KeychainService.swift */; };
 		FAA6A78C2863B46800B2AE64 /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA6A78B2863B46800B2AE64 /* UserDefaultsService.swift */; };
 		FAC6EF73284FEAAA00205339 /* Element.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6EF72284FEAAA00205339 /* Element.swift */; };
 		FAC6EF75284FEAB600205339 /* ElementsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6EF74284FEAB600205339 /* ElementsManager.swift */; };
@@ -38,6 +40,7 @@
 		FA37ED8A2846AECD00C499CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA37ED9128480D6B00C499CB /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		FA37ED9228480D6B00C499CB /* CustomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTableViewCell.xib; sourceTree = "<group>"; };
+		FA818746288765DA002AF551 /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 		FAA6A78B2863B46800B2AE64 /* UserDefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsService.swift; sourceTree = "<group>"; };
 		FAC6EF72284FEAAA00205339 /* Element.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Element.swift; sourceTree = "<group>"; };
 		FAC6EF74284FEAB600205339 /* ElementsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementsManager.swift; sourceTree = "<group>"; };
@@ -55,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA818745288764E2002AF551 /* KeychainSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				FAA6A78B2863B46800B2AE64 /* UserDefaultsService.swift */,
+				FA818746288765DA002AF551 /* KeychainService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -175,6 +180,9 @@
 			dependencies = (
 			);
 			name = FileManager;
+			packageProductDependencies = (
+				FA818744288764E2002AF551 /* KeychainSwift */,
+			);
 			productName = FileManager;
 			productReference = FA37ED792846AECA00C499CB /* FileManager.app */;
 			productType = "com.apple.product-type.application";
@@ -203,6 +211,9 @@
 				Base,
 			);
 			mainGroup = FA37ED702846AECA00C499CB;
+			packageReferences = (
+				FA818743288764E2002AF551 /* XCRemoteSwiftPackageReference "keychain-swift" */,
+			);
 			productRefGroup = FA37ED7A2846AECA00C499CB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -243,6 +254,7 @@
 				FAC6EF7A284FF22C00205339 /* FilesViewController+TableView.swift in Sources */,
 				FAC6EF82285013EF00205339 /* FilesViewControlles+CollectionView.swift in Sources */,
 				FAE25D0A2856875400743B3A /* ImageViewController.swift in Sources */,
+				FA818747288765DA002AF551 /* KeychainService.swift in Sources */,
 				FAC6EF78284FEAF800205339 /* ElementsManagerDelegate.swift in Sources */,
 				FAA6A78C2863B46800B2AE64 /* UserDefaultsService.swift in Sources */,
 			);
@@ -464,6 +476,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		FA818743288764E2002AF551 /* XCRemoteSwiftPackageReference "keychain-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/evgenyneu/keychain-swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FA818744288764E2002AF551 /* KeychainSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FA818743288764E2002AF551 /* XCRemoteSwiftPackageReference "keychain-swift" */;
+			productName = KeychainSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FA37ED712846AECA00C499CB /* Project object */;
 }
