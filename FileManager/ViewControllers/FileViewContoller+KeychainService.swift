@@ -87,7 +87,7 @@ extension FilesViewController {
     }
     
     func checkStatusOfVerification() {
-        if self.verificationStatus == false {
+        if !self.verificationStatus {
             checkPassword()
         }
     }

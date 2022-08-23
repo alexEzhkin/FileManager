@@ -26,12 +26,11 @@ class LocalNotificationsService {
                     print(settings)
                     guard settings.authorizationStatus == .authorized else { return }
                 }
+                self.sendRemindingNotification()
             }
-        self.sendFarewellNotification()
-        self.sendRemindingNotification()
     }
     
-    private func sendFarewellNotification() {
+    func sendFarewellNotification() {
         let content = UNMutableNotificationContent()
         content.title = "Goodbye!"
         content.body = "See you again \u{1F601}"

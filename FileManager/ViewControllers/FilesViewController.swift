@@ -15,7 +15,7 @@ class FilesViewController: UIViewController {
     
     let segmentControl: UISegmentedControl = UISegmentedControl(items: ["Table", "Collection"])
     
-    var verificationStatus: Bool = false
+    var verificationStatus = false
     
     var manager = ElementsManager()
     
