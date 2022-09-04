@@ -17,10 +17,8 @@ class LocalNotificationsService {
     private init() {}
     
     func requestNotificationsPermissions() {
-        
         notificationCenter
             .requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
-                
                 guard granted else { return }
                 self.notificationCenter.getNotificationSettings { (settings) in
                     print(settings)
