@@ -15,7 +15,13 @@ class FilesViewController: UIViewController {
     
     let segmentControl: UISegmentedControl = UISegmentedControl(items: ["Table", "Collection"])
     
+    var verificationStatus = false
+    
     var manager = ElementsManager()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        checkStatusOfVerification()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +32,8 @@ class FilesViewController: UIViewController {
         
         setUpTableView()
         setUpCollectionView()
+        
+        enableNotifications()
         
         changingViewCell()
     }
@@ -263,5 +271,11 @@ extension FilesViewController: PHPickerViewControllerDelegate {
         itemProvider.loadFileRepresentation(forTypeIdentifier: UTType.image.identifier) { data, error in
             callback(data?.lastPathComponent)
         }
+    }
+    
+    // MARK: - LocalNotificationService manipulations
+    
+    private func enableNotifications() {
+        LocalNotificationsService.shared.requestNotificationsPermissions()
     }
 }
